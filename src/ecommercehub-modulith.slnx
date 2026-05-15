@@ -1,1 +1,5 @@
-<Solution/>
+<Solution>
+  <Folder Name="/Bootstrapper/">
+    <Project Path="Bootstrapper/Api/Api.csproj"/>
+  </Folder>
+</Solution>
