@@ -2,4 +2,17 @@
   <Folder Name="/Bootstrapper/">
     <Project Path="Bootstrapper/Api/Api.csproj"/>
   </Folder>
+  <Folder Name="/Modules/"/>
+  <Folder Name="/Modules/Basket/">
+    <Project Path="Modules/Basket/Basket/Basket.csproj"/>
+  </Folder>
+  <Folder Name="/Modules/Catalog/">
+    <Project Path="Modules/Catalog/Catalog/Catalog.csproj"/>
+  </Folder>
+  <Folder Name="/Modules/Ordering/">
+    <Project Path="Modules/Ordering/Ordering/Ordering.csproj"/>
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared/Shared/Shared.csproj"/>
+  </Folder>
 </Solution>
