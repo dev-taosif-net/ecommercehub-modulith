@@ -1,7 +1,3 @@
-using Basket;
-using Catalog;
-using Ordering;
-
 var builder = WebApplication.CreateBuilder(args);
 
 //Add services to the container.
@@ -14,6 +10,11 @@ builder.Services
 var app = builder.Build();
 
 //Configure the HTTP request pipeline.
+
+app
+    .UseBasketModule()
+    .UseCatalogModule()
+    .UseOrderingModule();
 
 app.MapGet("/", () => "Api is working.");
 
