@@ -1,4 +1,4 @@
-﻿name: Auto Delete Branch on Main Merge
+﻿name: Delete Branch Only On Main Merge
 
 on:
   pull_request:
@@ -6,17 +6,25 @@ on:
 
 jobs:
   delete-branch:
+    # Needed to delete refs in the repo
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Delete branch only if merged to main
-        if: github.event.pull_request.merged && github.event.pull_request.base.ref == 'main'
-        uses: dawidd6/action-delete-branch@v3
-        with:
-          github_token: ${{ github.token }}
-          branches: ${{ github.event.pull_request.head.ref }}
+      - name: Delete source branch if merged into main
+        if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          ENCODED_BRANCH="${BRANCH//\//%2F}"
+          curl -sS -X DELETE \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${REPO}/git/refs/heads/${ENCODED_BRANCH}"
 
-      - name: Keep branch for all other merges
-        if: github.event.pull_request.merged && github.event.pull_request.base.ref != 'main'
-        run: echo "Branch '${{ github.event.pull_request.head.ref }}' was merged into '${{ github.event.pull_request.base.ref }}' - keeping branch automatically."
-
+      - name: Keep source branch for non-main targets
+        if: github.event.pull_request.merged == true && github.event.pull_request.base.ref != 'main'
+        run: echo "Merged into '${{ github.event.pull_request.base.ref }}'; keeping source branch '${{ github.event.pull_request.head.ref }}'."
