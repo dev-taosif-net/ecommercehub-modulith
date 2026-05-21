@@ -1,6 +1,5 @@
 ﻿namespace Api;
 
-public class TestFile
+internal class TestFile
 {
-    //Do nothing
 }
