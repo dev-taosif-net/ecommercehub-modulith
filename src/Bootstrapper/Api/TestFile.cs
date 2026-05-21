@@ -1,5 +1,5 @@
 ﻿namespace Api;
 
-internal class TestFile
+public class TestFile
 {
 }
