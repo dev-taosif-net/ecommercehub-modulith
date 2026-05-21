@@ -41,19 +41,34 @@ See [Getting Started](docs/getting-started/prerequisites.md) to get up and runni
 
 ## Documentation Index
 
-- [Architecture Overview](docs/architecture/overview.md)
+### 🏗️ Architecture
+- [Overview](docs/architecture/overview.md)
 - [Module Communication](docs/architecture/module-communication.md)
-- [Getting Started](docs/getting-started/running-locally.md)
-- [Module: Catalog](docs/modules/catalog.md)
-- [Module: Basket](docs/modules/basket.md)
-- [Module: Ordering](docs/modules/ordering.md)
+
+### 🚀 Getting Started
+- [Prerequisites](docs/getting-started/prerequisites.md)
+- [Running Locally](docs/getting-started/running-locally.md)
+- [Configuration](docs/getting-started/configuration.md)
+
+### 📦 Modules
+- [Catalog](docs/modules/catalog.md)
+- [Basket](docs/modules/basket.md)
+- [Ordering](docs/modules/ordering.md)
+
+### 🔗 Shared
 - [Shared Kernel](docs/shared/shared-kernel.md)
-- [Bootstrapper / API](docs/bootstrapper/api.md)
+
+### ⚙️ Bootstrapper
+- [API](docs/bootstrapper/api.md)
+
+### 📋 Decisions (ADRs)
 - [ADR-001: Modulith Pattern](docs/decisions/adr-001-modulith-pattern.md)
+
+### 🐙 Git
 - [Git Commands Reference](docs/git/git-commands-reference.md)
 
 ## Tech Stack
 
 - [.NET 10](https://dotnet.microsoft.com/) / ASP.NET Core 10
-- C# 13
+- C# 14
 - Modulith / Vertical Slice Architecture
