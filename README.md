@@ -50,6 +50,7 @@ See [Getting Started](docs/getting-started/prerequisites.md) to get up and runni
 - [Shared Kernel](docs/shared/shared-kernel.md)
 - [Bootstrapper / API](docs/bootstrapper/api.md)
 - [ADR-001: Modulith Pattern](docs/decisions/adr-001-modulith-pattern.md)
+- [Git Commands Reference](docs/git/git-commands-reference.md)
 
 ## Tech Stack
 
