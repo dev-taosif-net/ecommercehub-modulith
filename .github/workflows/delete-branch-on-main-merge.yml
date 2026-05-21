@@ -1,0 +1,22 @@
+﻿name: Auto Delete Branch on Main Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  delete-branch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Delete branch only if merged to main
+        if: github.event.pull_request.merged && github.event.pull_request.base.ref == 'main'
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{ github.token }}
+          branches: ${{ github.event.pull_request.head.ref }}
+
+      - name: Keep branch for all other merges
+        if: github.event.pull_request.merged && github.event.pull_request.base.ref != 'main'
+        run: echo "Branch '${{ github.event.pull_request.head.ref }}' was merged into '${{ github.event.pull_request.base.ref }}' - keeping branch automatically."
+
