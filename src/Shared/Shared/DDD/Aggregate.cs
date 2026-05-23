@@ -3,6 +3,12 @@
 public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
 {
     private readonly List<IDomainEvent> _domainEvents = [];
+    private readonly IReadOnlyList<IDomainEvent> _readOnlyDomainEvents;
+
+    protected Aggregate()
+    {
+        _readOnlyDomainEvents = _domainEvents.AsReadOnly();
+    }
 
     public void AddDomainEvent(IDomainEvent domainEvent)
     {
@@ -10,7 +16,7 @@ public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
     }
 
     //Implemented from interface IAggregate
-    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public IReadOnlyList<IDomainEvent> DomainEvents => _readOnlyDomainEvents;
 
     public IDomainEvent[] ClearDomainEvents()
     {
