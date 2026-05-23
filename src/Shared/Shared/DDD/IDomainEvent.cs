@@ -4,7 +4,14 @@ namespace Shared.DDD;
 
 public interface IDomainEvent : INotification
 {
-    Guid EventId => Guid.NewGuid();
-    public DateTime OccurredOn => DateTime.Now;
+    Guid EventId { get; }
+    DateTime OccurredOn { get; }
+    string EventType { get; }
+}
+
+public abstract record DomainEvent : IDomainEvent
+{
+    public Guid EventId { get; } = Guid.NewGuid();
+    public DateTime OccurredOn { get; } = DateTime.UtcNow;
     public string EventType => GetType().AssemblyQualifiedName!;
 }

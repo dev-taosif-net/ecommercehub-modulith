@@ -1,9 +1,9 @@
 ﻿namespace Shared.DDD;
 
-public class Aggregate<TId> : Entity<TId>, IAggregate<TId>
+public abstract class Aggregate<TId> : Entity<TId>, IAggregate<TId>
 {
     private readonly List<IDomainEvent> _domainEvents = [];
-    
+
     public void AddDomainEvent(IDomainEvent domainEvent)
     {
         _domainEvents.Add(domainEvent);
@@ -18,6 +18,4 @@ public class Aggregate<TId> : Entity<TId>, IAggregate<TId>
         _domainEvents.Clear();
         return dequeuedEvents;
     }
-
-    
 }
