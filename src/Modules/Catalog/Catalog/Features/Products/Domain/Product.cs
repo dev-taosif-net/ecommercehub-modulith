@@ -13,6 +13,8 @@ public class Product : Aggregate<Guid>
     {
         ArgumentException.ThrowIfNullOrEmpty(name);
         ArgumentNullException.ThrowIfNull(category);
+        ArgumentException.ThrowIfNullOrEmpty(description);
+        ArgumentException.ThrowIfNullOrEmpty(imageFile);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
         var product = new Product
@@ -34,6 +36,8 @@ public class Product : Aggregate<Guid>
     {
         ArgumentException.ThrowIfNullOrEmpty(name);
         ArgumentNullException.ThrowIfNull(category);
+        ArgumentException.ThrowIfNullOrEmpty(description);
+        ArgumentException.ThrowIfNullOrEmpty(imageFile);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
         // Update Product entity fields
