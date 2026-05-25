@@ -1,6 +1,6 @@
 services:
-  api:
-    image: ${DOCKER_REGISTRY-}api
-    build:
-      context: .
-      dockerfile: Bootstrapper/Api/Dockerfile
+  ecommercehubModulithDb:
+    image: postgres
+
+volumes:
+  postgres_ecommercehubModulithDb:
