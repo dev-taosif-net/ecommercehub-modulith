@@ -1,0 +1,12 @@
+services:
+  ecommercehubModulithDb:
+    container_name: ecommercehubModulithDb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=EcommercehubModulithDb
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_ecommercehubModulithDb:/var/lib/postgresql

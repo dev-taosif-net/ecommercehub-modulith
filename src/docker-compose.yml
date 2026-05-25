@@ -1,0 +1,6 @@
+services:
+  ecommercehubModulithDb:
+    image: postgres
+
+volumes:
+  postgres_ecommercehubModulithDb:
