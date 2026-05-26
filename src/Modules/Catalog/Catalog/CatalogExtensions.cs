@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Catalog.Infrastructure.Seed;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure.Extensions;
-
+using Shared.Infrastructure.Seed;
 namespace Catalog;
 
 public static class CatalogExtensions
@@ -12,6 +13,8 @@ public static class CatalogExtensions
         //Add Infrastructure Services
         var connectionString = configuration.GetConnectionString("Database");
         services.AddDbContext<CatalogDbContext>(options => options.UseNpgsql(connectionString));
+        
+        services.AddScoped<IDataSeeder, CatalogDataSeeder>();
 
         return services;
     }
@@ -20,6 +23,7 @@ public static class CatalogExtensions
     {
         //Use Infrastructure Services
         app.MigrateDatabase<CatalogDbContext>();
+        app.SeedDatabase();
 
         return app;
     }
