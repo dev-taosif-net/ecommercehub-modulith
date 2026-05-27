@@ -30,7 +30,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .IsRequired()
             .HasPrecision(18, 2);
 
-        // Primitive collection – stored as a JSON column (EF Core 8+)
+        // Primitive collection mapped to a PostgreSQL text[] column
         builder.Property(p => p.Category)
             .IsRequired();
 
