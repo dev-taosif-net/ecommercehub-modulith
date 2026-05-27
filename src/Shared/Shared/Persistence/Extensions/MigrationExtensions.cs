@@ -21,7 +21,7 @@ public static class MigrationExtensions
 
             using var scope   = services.CreateScope();
             var context       = scope.ServiceProvider.GetRequiredService<TContext>();
-            context.Database.MigrateAsync().GetAwaiter().GetResult();
+            context.Database.Migrate();
 
             logger.LogInformation("Database migrations applied successfully for {DbContext}.", contextName);
         }
