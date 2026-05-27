@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Catalog.Infrastructure;
+namespace Catalog.Persistence;
 
 public class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbContext(options)
 {

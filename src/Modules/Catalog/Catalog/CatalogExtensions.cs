@@ -1,10 +1,12 @@
-﻿using Catalog.Infrastructure.Seed;
+﻿using Catalog.Persistence;
+using Catalog.Persistence.Seed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.Extensions;
-using Shared.Infrastructure.Interceptors;
-using Shared.Infrastructure.Seed;
+using Shared.Persistence.Extensions;
+using Shared.Persistence.Interceptors;
+using Shared.Persistence.Seed;
+
 namespace Catalog;
 
 public static class CatalogExtensions

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Shared.Infrastructure.Seed;
+using Shared.Persistence.Seed;
 
-namespace Shared.Infrastructure.Extensions;
+namespace Shared.Persistence.Extensions;
 
 public static class SeederExtensions
 {

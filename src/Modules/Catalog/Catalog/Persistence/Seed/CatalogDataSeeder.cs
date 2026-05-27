@@ -1,6 +1,6 @@
-﻿using Shared.Infrastructure.Seed;
+﻿using Shared.Persistence.Seed;
 
-namespace Catalog.Infrastructure.Seed;
+namespace Catalog.Persistence.Seed;
 
 public class CatalogDataSeeder(CatalogDbContext dbContext) : IDataSeeder
 {

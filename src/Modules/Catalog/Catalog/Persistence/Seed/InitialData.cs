@@ -1,4 +1,4 @@
-﻿namespace Catalog.Infrastructure.Seed;
+﻿namespace Catalog.Persistence.Seed;
 
 internal static class InitialData
 {

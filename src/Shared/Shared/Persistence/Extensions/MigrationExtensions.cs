@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Shared.Infrastructure.Extensions;
+namespace Shared.Persistence.Extensions;
 
 public static class MigrationExtensions
 {
