@@ -19,7 +19,8 @@ public static class CatalogExtensions
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         
         //Add Persistence Services
-        var connectionString = configuration.GetConnectionString("Database");
+        var connectionString = configuration.GetConnectionString("Database")
+            ?? throw new InvalidOperationException("Connection string 'Database' is not configured.");
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
         
