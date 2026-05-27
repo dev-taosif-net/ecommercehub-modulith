@@ -1,6 +1,8 @@
-﻿using Catalog.Persistence;
+﻿using System.Reflection;
+using Catalog.Persistence;
 using Catalog.Persistence.Seed;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Persistence.Extensions;
@@ -13,11 +15,17 @@ public static class CatalogExtensions
 {
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration configuration)
     {
-        //Add Infrastructure Services
+        services.AddMediatR(cfg => 
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        
+        //Add Persistence Services
         var connectionString = configuration.GetConnectionString("Database");
-        services.AddDbContext<CatalogDbContext>(options =>
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        
+        services.AddDbContext<CatalogDbContext>((sp, options) =>
         {
-            options.AddInterceptors(new AuditableEntityInterceptor());
+            options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
             options.UseNpgsql(connectionString);
         });
         
@@ -28,7 +36,7 @@ public static class CatalogExtensions
 
     public static IApplicationBuilder UseCatalogModule(this IApplicationBuilder app)
     {
-        //Use Infrastructure Services
+        //Use Persistence Services
         app.MigrateDatabase<CatalogDbContext>();
         app.SeedDatabase();
 
