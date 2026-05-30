@@ -1,3 +1,3 @@
 ﻿namespace Catalog.Features.Products.Dtos;
 
-public record ProductDto(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
+public abstract record ProductDto(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price);
