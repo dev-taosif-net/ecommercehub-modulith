@@ -6,6 +6,6 @@ var app = builder.Build();
 
 app.UseApiPipeline();
 
-app.MapGet("/", () => "Api is working.");
+app.MapGet("/Test", () => "Api is working.");
 
 app.Run();
