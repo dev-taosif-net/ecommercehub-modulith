@@ -20,6 +20,7 @@ public class CreateProductEndpoint : ICarterModule
         .WithName("CreateProduct")
         .Produces<CreateProductResponse>(StatusCodes.Status201Created)
         .ProducesProblem(StatusCodes.Status400BadRequest)
+        .WithTags(ProductEndpointGroup.Tag)
         .WithSummary("Create ProductById")
         .WithDescription("Create ProductById");
     }

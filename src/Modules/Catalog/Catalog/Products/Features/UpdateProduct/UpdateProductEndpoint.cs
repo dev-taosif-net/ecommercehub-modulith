@@ -22,6 +22,7 @@ public class UpdateProductEndpoint : ICarterModule
             .Produces<UpdateProductResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
+            .WithTags(ProductEndpointGroup.Tag)
             .WithSummary("Update ProductById")
             .WithDescription("Update ProductById");
     }
