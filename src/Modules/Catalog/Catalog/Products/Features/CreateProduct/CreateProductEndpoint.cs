@@ -8,14 +8,14 @@ public class CreateProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/products", async (CreateProductCreateRequest createRequest, ISender sender) =>
+        app.MapPost(ProductEndpointGroup.Prefix, async (CreateProductCreateRequest createRequest, ISender sender) =>
         {
             var command = createRequest.Adapt<CreateProductCreateCommand>();
 
             var result = await sender.Send(command);
 
             var response = result.Adapt<CreateProductResponse>();
-            return Results.Created($"/products/{response.Id}", response);
+            return Results.Created($"/api/catalog/products/{response.Id}", response);
         })
         .WithName("CreateProduct")
         .Produces<CreateProductResponse>(StatusCodes.Status201Created)
