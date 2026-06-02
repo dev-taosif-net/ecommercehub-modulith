@@ -12,11 +12,10 @@ builder.Services
 
 var app = builder.Build();
 
-app.MapCarter();
-
-app.UseApiSwagger();
+app.MapGroup("/api").MapCarter();
 app.UseModules();
+app.UseApiSwagger();
 
-app.MapGet("/Test", () => "Api is working.");
+app.MapGet("/api/test", () => "Api is working.");
 
 app.Run();
