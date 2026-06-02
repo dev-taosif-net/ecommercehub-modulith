@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Catalog.Features.Products.EventHandlers;
+namespace Catalog.Features.Products.Domain.EventHandlers;
 
 internal sealed class ProductCreatedEventHandler(ILogger<ProductCreatedEventHandler> logger)
     : INotificationHandler<ProductCreatedEvent>

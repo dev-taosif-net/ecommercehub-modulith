@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.Domain;
+﻿namespace Catalog.Features.Products.Domain.Entities;
 
 public class Product : Aggregate<Guid>
 {

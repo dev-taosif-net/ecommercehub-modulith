@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Features.Products.Application.UpdateProduct;
 
-public record UpdateProductCommand(ProductDto Product)
+public record UpdateProductCommand(UpdateProductDto Product)
     : ICommand<UpdateProductResult>;
 
 public record UpdateProductResult(bool IsSuccess);
@@ -26,14 +26,14 @@ internal class UpdateProductHandler(CatalogDbContext dbContext)
 
         return new UpdateProductResult(true);
     }
-    
-    private void UpdateProductWithNewValues(Product product, ProductDto productDto)
+
+    private static void UpdateProductWithNewValues(Product product, UpdateProductDto dto)
     {
         product.Update(
-            productDto.Name,
-            productDto.Category,
-            productDto.Description,
-            productDto.ImageFile,
-            productDto.Price);
+            dto.Name,
+            dto.Category,
+            dto.Description,
+            dto.ImageFile,
+            dto.Price);
     }
 }

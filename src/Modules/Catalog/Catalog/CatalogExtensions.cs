@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Catalog.Persistence;
 using Catalog.Persistence.Seed;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore.Diagnostics;
