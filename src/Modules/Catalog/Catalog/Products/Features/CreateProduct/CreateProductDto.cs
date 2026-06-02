@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.CreateProduct;
+﻿namespace Catalog.Products.Features.CreateProduct;
 
 /// <summary>
 /// Write model for creating a new product. Does not include Id — the domain generates it.

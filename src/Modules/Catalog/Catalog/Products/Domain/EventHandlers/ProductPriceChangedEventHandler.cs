@@ -1,7 +1,7 @@
 ﻿using MediatR;
 
 
-namespace Catalog.Features.Products.Domain.EventHandlers;
+namespace Catalog.Products.Domain.EventHandlers;
 
 internal sealed class ProductPriceChangedEventHandler(ILogger<ProductPriceChangedEventHandler> logger)
     : INotificationHandler<ProductPriceChangedEvent>

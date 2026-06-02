@@ -1,10 +1,8 @@
 ﻿global using Shared.DDD;
-global using Catalog.Features.Products.Domain.Entities;
-global using Catalog.Features.Products.Domain.Events;
+global using Catalog.Products.Domain.Entities;
+global using Catalog.Products.Domain.Events;
 global using Microsoft.EntityFrameworkCore;
 global using Shared.CQRS;
 global using Catalog.Persistence;
-global using Catalog.Features.Products.CreateProduct;
-global using Catalog.Features.Products.UpdateProduct;
 global using Mapster;
 global using Microsoft.Extensions.Logging;

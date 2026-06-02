@@ -1,3 +1,3 @@
-﻿namespace Catalog.Features.Products.Domain.Events;
+﻿namespace Catalog.Products.Domain.Events;
 
 public record ProductPriceChangedEvent(Product Product): DomainEvent;

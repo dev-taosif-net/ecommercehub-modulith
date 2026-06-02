@@ -1,6 +1,6 @@
 ﻿
 
-namespace Catalog.Features.Products.GetProducts;
+namespace Catalog.Products.Features.GetProducts;
 
 public record GetProductsQuery : IQuery<GetProductsResult>;
 public record GetProductsResult(IEnumerable<ProductDto> Products);

@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.CreateProduct;
+﻿namespace Catalog.Products.Features.CreateProduct;
 
 public record CreateProductCommand(CreateProductDto Product) : ICommand<CreateProductResponse>;
 

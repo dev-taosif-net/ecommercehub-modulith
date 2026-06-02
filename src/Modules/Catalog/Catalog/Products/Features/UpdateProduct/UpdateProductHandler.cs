@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.UpdateProduct;
+﻿namespace Catalog.Products.Features.UpdateProduct;
 
 public record UpdateProductCommand(UpdateProductDto Product)
     : ICommand<UpdateProductResult>;
