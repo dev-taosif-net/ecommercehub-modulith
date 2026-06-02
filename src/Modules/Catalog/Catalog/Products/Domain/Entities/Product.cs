@@ -40,7 +40,7 @@ public class Product : Aggregate<Guid>
         ArgumentException.ThrowIfNullOrEmpty(imageFile);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
-        // Update Product entity fields
+        // Update ProductById entity fields
         Name = name;
         Category = category.ToList();
         Description = description;

@@ -22,7 +22,7 @@ public class UpdateProductEndpoint
             .Produces<UpdateProductResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Update Product")
-            .WithDescription("Update Product");
+            .WithSummary("Update ProductById")
+            .WithDescription("Update ProductById");
     }
 }

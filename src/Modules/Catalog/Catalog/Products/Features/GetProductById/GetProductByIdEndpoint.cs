@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Products.Features.GetProductById;
 
-public record GetProductByIdResponse(ProductDto Product);
+public record GetProductByIdResponse(ProductByIdDto ProductById);
 
 public class GetProductByIdEndpoint : ICarterModule
 {
@@ -17,7 +17,7 @@ public class GetProductByIdEndpoint : ICarterModule
             .WithName("GetProductById")
             .Produces<GetProductByIdResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .WithSummary("Get Product By Id")
-            .WithDescription("Get Product By Id");
+            .WithSummary("Get ProductById By Id")
+            .WithDescription("Get ProductById By Id");
     }
 }
