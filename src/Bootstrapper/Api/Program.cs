@@ -1,10 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddApiServices(builder.Configuration);
+builder.Services
+    .AddModules(builder.Configuration)
+    .AddApiSwagger();
 
 var app = builder.Build();
 
-app.UseApiPipeline();
+app.UseApiSwagger();
+app.UseModules();
 
 app.MapGet("/Test", () => "Api is working.");
 

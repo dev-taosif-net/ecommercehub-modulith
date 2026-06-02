@@ -1,14 +1,9 @@
 ﻿namespace Api.Extensions;
 
-public static class ServiceCollectionExtensions
+public static class SwaggerExtensions
 {
-    public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddApiSwagger(this IServiceCollection services)
     {
-        services
-            .AddBasketModule(configuration)
-            .AddCatalogModule(configuration)
-            .AddOrderingModule(configuration);
-
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(options =>
         {
@@ -25,6 +20,21 @@ public static class ServiceCollectionExtensions
         });
 
         return services;
+    }
+
+    public static WebApplication UseApiSwagger(this WebApplication app)
+    {
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "EcommerceHub Modulith API v1");
+                options.RoutePrefix = string.Empty;
+            });
+        }
+
+        return app;
     }
 }
 
