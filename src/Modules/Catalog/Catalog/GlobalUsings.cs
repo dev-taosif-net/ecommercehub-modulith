@@ -4,7 +4,7 @@ global using Catalog.Features.Products.Domain.Events;
 global using Microsoft.EntityFrameworkCore;
 global using Shared.CQRS;
 global using Catalog.Persistence;
-global using Catalog.Features.Products.Application.CreateProduct;          // CreateProductRequest
-global using Catalog.Features.Products.Application.UpdateProduct;          // UpdateProductRequest
+global using Catalog.Features.Products.CreateProduct;
+global using Catalog.Features.Products.UpdateProduct;
 global using Mapster;
 global using Microsoft.Extensions.Logging;

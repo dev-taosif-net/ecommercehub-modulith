@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.Application.GetProductByCategory;
+﻿namespace Catalog.Features.Products.GetProducts;
 
 public record ProductDto(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price);
 

@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.Application.GetProductByCategory;
+﻿namespace Catalog.Features.Products.GetProductByCategory;
 
 public record GetProductByCategoryQuery(string Category) : IQuery<GetProductByCategoryResult>;
 public record GetProductByCategoryResult(IEnumerable<ProductDto> Products);

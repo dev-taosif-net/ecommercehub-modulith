@@ -1,4 +1,4 @@
-﻿namespace Catalog.Features.Products.Application.UpdateProduct;
+﻿namespace Catalog.Features.Products.UpdateProduct;
 
 /// <summary>
 /// Write model for updating an existing product. Includes Id to identify the target record.
