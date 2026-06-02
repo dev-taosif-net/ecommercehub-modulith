@@ -1,6 +1,9 @@
+name: ecommercehubModulith
+
 services:
   ecommercehubModulithDb:
     image: postgres
 
 volumes:
   postgres_ecommercehubModulithDb:
+    name: ecommercehubModulithDb_volume
