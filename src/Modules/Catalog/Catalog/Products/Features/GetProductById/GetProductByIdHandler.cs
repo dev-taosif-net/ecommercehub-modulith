@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Products.Features.GetProductById;
 
 public record GetProductByIdQuery(Guid Id) : IQuery<GetProductByIdResult>;
-public record GetProductByIdResult(ProductDto Product);
+public record GetProductByIdResult(ProductByIdDto ProductById);
 
 internal class GetProductByIdHandler(CatalogDbContext dbContext)
     : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
@@ -13,9 +13,9 @@ internal class GetProductByIdHandler(CatalogDbContext dbContext)
             .FirstOrDefaultAsync(p => p.Id == query.Id, cancellationToken);
 
         if (product is null)
-            throw new KeyNotFoundException($"Product with id '{query.Id}' was not found.");
+            throw new KeyNotFoundException($"ProductById with id '{query.Id}' was not found.");
 
-        var productDto = product.Adapt<ProductDto>();
+        var productDto = product.Adapt<ProductByIdDto>();
 
         return new GetProductByIdResult(productDto);
     }

@@ -1,7 +1,7 @@
 ﻿namespace Catalog.Products.Features.GetProductByCategory;
 
 public record GetProductByCategoryQuery(string Category) : IQuery<GetProductByCategoryResult>;
-public record GetProductByCategoryResult(IEnumerable<ProductDto> Products);
+public record GetProductByCategoryResult(IEnumerable<ProductByCategoryDto> Products);
 
 internal class GetProductByCategoryHandler(CatalogDbContext dbContext)
     : IQueryHandler<GetProductByCategoryQuery, GetProductByCategoryResult>
@@ -14,9 +14,9 @@ internal class GetProductByCategoryHandler(CatalogDbContext dbContext)
             .OrderBy(p => p.Name)
             .ToListAsync(cancellationToken);
 
-        var productDtos = products.Adapt<List<ProductDto>>();
+        var productByCategoryDtos = products.Adapt<List<ProductByCategoryDto>>();
 
-        return new GetProductByCategoryResult(productDtos);
+        return new GetProductByCategoryResult(productByCategoryDtos);
     }
 }
 

@@ -16,7 +16,7 @@ internal class DeleteProductHandler(CatalogDbContext dbContext)
         if (product is null)
         {
             // throw new ProductNotFoundException(command.ProductId);
-            throw new Exception($"Product with id {command.ProductId} not found.");
+            throw new Exception($"ProductById with id {command.ProductId} not found.");
         }
 
         dbContext.Products.Remove(product);
