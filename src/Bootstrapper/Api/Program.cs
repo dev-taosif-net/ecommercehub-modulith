@@ -6,7 +6,6 @@ builder.Services
 
 var app = builder.Build();
 
-app.UseStaticFiles();
 app.UseModules();
 app.UseApiSwagger();
 
