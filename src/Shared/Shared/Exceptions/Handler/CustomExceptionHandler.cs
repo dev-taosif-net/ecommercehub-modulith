@@ -58,7 +58,7 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger)
             Instance = context.Request.Path
         };
 
-        // problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
+        problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
 
         if (exception is ValidationException validationException)
         {

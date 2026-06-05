@@ -18,6 +18,7 @@ public static class CatalogExtensions
             {
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
                 cfg.AddOpenBehavior(typeof(Shared.Behaviors.ValidationBehavior<,>));
+                cfg.AddOpenBehavior(typeof(Shared.Behaviors.LoggingBehavior<,>));
             }
         );
 
