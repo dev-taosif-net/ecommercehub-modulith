@@ -1,13 +1,26 @@
-﻿namespace Catalog.Products.Features.CreateProduct;
+﻿using FluentValidation;
 
-public record CreateProductCreateCommand (CreateProductDto Product) :  ICommand<CreateProductResult>;
+namespace Catalog.Products.Features.CreateProduct;
+
+public record CreateProductCommand (CreateProductDto Product) :  ICommand<CreateProductResult>;
 
 public record CreateProductResult(Guid Id);
 
-internal class CreateProductHandler(CatalogDbContext dbContext)
-    : ICommandHandler<CreateProductCreateCommand, CreateProductResult>
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {
-    public async Task<CreateProductResult> Handle(CreateProductCreateCommand createCommand, CancellationToken cancellationToken)
+    public CreateProductCommandValidator()
+    {
+        RuleFor(x => x.Product.Name).NotEmpty().WithMessage("Name is required");
+        RuleFor(x => x.Product.Category).NotEmpty().WithMessage("Category is required");
+        RuleFor(x => x.Product.ImageFile).NotEmpty().WithMessage("ImageFile is required");
+        RuleFor(x => x.Product.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
+    }
+}
+
+internal class CreateProductHandler(CatalogDbContext dbContext)
+    : ICommandHandler<CreateProductCommand, CreateProductResult>
+{
+    public async Task<CreateProductResult> Handle(CreateProductCommand createCommand, CancellationToken cancellationToken)
     {
         var product = CreateNewProduct(createCommand.Product);
 

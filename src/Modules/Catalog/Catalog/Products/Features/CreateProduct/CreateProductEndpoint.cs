@@ -10,7 +10,7 @@ public class CreateProductEndpoint : ICarterModule
     {
         app.MapPost(ProductEndpointGroup.Prefix, async (CreateProductCreateRequest createRequest, ISender sender) =>
         {
-            var command = createRequest.Adapt<CreateProductCreateCommand>();
+            var command = createRequest.Adapt<CreateProductCommand>();
 
             var result = await sender.Send(command);
 

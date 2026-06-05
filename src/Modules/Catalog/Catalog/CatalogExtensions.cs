@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Catalog.Persistence.Seed;
-using Microsoft.AspNetCore.Builder;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,21 +14,28 @@ public static class CatalogExtensions
 {
     public static IServiceCollection AddCatalogModule(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddMediatR(cfg => 
-            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        
+        services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                cfg.AddOpenBehavior(typeof(Shared.Behaviors.ValidationBehavior<,>));
+            }
+        );
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
         //Add Persistence Services
         var connectionString = configuration.GetConnectionString("Database")
-            ?? throw new InvalidOperationException("Connection string 'Database' is not configured.");
+                               ?? throw new InvalidOperationException(
+                                   "Connection string 'Database' is not configured.");
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
-        
+
         services.AddDbContext<CatalogDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
             options.UseNpgsql(connectionString);
         });
-        
+
         services.AddScoped<IDataSeeder, CatalogDataSeeder>();
 
         return services;
