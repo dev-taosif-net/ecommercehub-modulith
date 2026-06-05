@@ -25,8 +25,7 @@ internal class DeleteProductHandler(CatalogDbContext dbContext)
 
         if (product is null)
         {
-            // throw new ProductNotFoundException(command.ProductId);
-            throw new Exception($"ProductById with id {command.ProductId} not found.");
+            throw new ProductNotFoundException(command.ProductId);
         }
 
         dbContext.Products.Remove(product);
@@ -34,5 +33,4 @@ internal class DeleteProductHandler(CatalogDbContext dbContext)
 
         return new DeleteProductResult(true);
     }
-    
 }
