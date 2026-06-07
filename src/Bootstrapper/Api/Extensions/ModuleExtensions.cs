@@ -1,5 +1,4 @@
-﻿using Carter;
-using Shared.Extensions;
+﻿using Shared.Extensions;
 
 namespace Api.Extensions;
 
